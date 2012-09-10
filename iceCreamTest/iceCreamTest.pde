@@ -21,5 +21,6 @@ void multCircle(float posX, float posY, float r, int n)  //n = # of times to rec
   if( ) {  //need exit condition w.r.t. n
     multCircle(posX + (r/2), posY - (r*sqrt(3))/2), r/2, r/2);
     multCircle(posX - (r/2), posY - (r*sqrt(3))/2, r/2, r/2);
+    n++;
   }
 }
