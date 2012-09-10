@@ -12,13 +12,14 @@ void draw()
   smooth();
   stroke(0);
   
-  int i = 0;
-  while(i<3)  //number of ellipses = 2^i
-  {
-    for(int d=20; d>0; d-=5)  //size of ellipses
-    {
-      ellipse(width/2, height/2, i*20, i*20);  //location needs to be changeable
-    }
-    i++;
+}
+
+void multCircle(float posX, float posY, float r, int n)  //n = # of times to recurse
+{
+  ellipse(posX, posY, r, r);
+  
+  if( ) {  //need exit condition w.r.t. n
+    multCircle(posX + (r/2), posY - (r*sqrt(3))/2), r/2, r/2);
+    multCircle(posX - (r/2), posY - (r*sqrt(3))/2, r/2, r/2);
   }
 }
