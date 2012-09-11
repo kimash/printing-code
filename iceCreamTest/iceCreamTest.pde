@@ -15,9 +15,19 @@ void draw()
   //cone
   fill(255);
   triangle(width/2 + 75, height/2, width/2 - 75, height/2, width/2, height/2 + 350);
+  
   //ice cream
   fill(0);
-  drawCircle(width/2, height/2 - 150, 150);    
+  drawCircle(width/2, height/2 - 150, 150);
+  
+  //cone squares
+  fill(255);
+  int s = 24; 
+  for(int i=0; i<2; i++){
+    for(int j=0; j<3; j++){
+      rect(width/2 - 53 + i*s + j*s, height/2 + 50 + j*s, s, s);
+    }
+  }
 }
 
 void drawCircle(float x, float y, float d) 
