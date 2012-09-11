@@ -12,17 +12,21 @@ void draw()
   smooth();
   stroke(0);
   fill(0);
-  drawCircle(width/2, height/2, 150);
+  drawCircle(width/2, height/2 - 150, 150);  //ice cream
+  
+  fill(255);
+  //triangle(
 }
 
-void drawCircle(float x, float y, float r) 
+void drawCircle(float x, float y, float d) 
 {
-  ellipse(x, y, r, r);
+  ellipse(x, y, d, d);
 
-  if (r >= 90) {
-    drawCircle(x+r/3, y + (r*sqrt(3))/3, 3*r/4);
-    drawCircle(x-r/3, y + (r*sqrt(3))/3, 3*r/4);
+  if (d >= 90) {
+    drawCircle(x+d/3, y + (d*sqrt(3))/3, 3*d/4);
+    drawCircle(x-d/3, y + (d*sqrt(3))/3, 3*d/4);
   }
 }
+
 
 
