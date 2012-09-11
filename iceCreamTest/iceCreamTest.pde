@@ -11,6 +11,7 @@ void draw()
   background(255);
   smooth();
   stroke(0);
+  strokeWeight(4);
   //cone
   fill(255);
   triangle(width/2 + 75, height/2, width/2 - 75, height/2, width/2, height/2 + 350);
