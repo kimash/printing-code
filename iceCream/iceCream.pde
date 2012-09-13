@@ -32,16 +32,16 @@ void setup()
     canvas.strokeWeight(4);
     //cone
     canvas.fill(255);
-    canvas.triangle(width/2 + 75, height/2, width/2 - 75, height/2, width/2, height/2 + 350);
+    canvas.triangle(canvas.width/2 + 75, canvas.height/2, canvas.width/2 - 75, canvas.height/2, canvas.width/2, canvas.height/2 + 350);
     //ice cream
     canvas.fill(0);
-    canvas.drawCircle(width/2, height/2 - 150, 150);
+    canvas.drawCircle((float)canvas.width/2, (float)canvas.height/2 - 150, (float)150);
     //cone squares
     fill(255);
     int s = 24; 
     for(int i=0; i<2; i++){
       for(int j=0; j<3; j++){
-        canvas.rect(width/2 + 30 - i*s - j*s, height/2 + 50 + j*s, s, s);
+        canvas.rect(canvas.width/2 + 30 - i*s - j*s, canvas.height/2 + 50 + j*s, s, s);
       }
     }
     
@@ -76,7 +76,7 @@ void calculateResizeRatio()
   else                          ratio = ratioHeight;
 }
 
-float drawCircle(float x, float y, float d) 
+void drawCircle(float x, float y, float d) 
 {
   ellipse(x, y, d, d);
 
