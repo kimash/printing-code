@@ -35,7 +35,7 @@ void setup()
     canvas.triangle(canvas.width/2 + 75, canvas.height/2, canvas.width/2 - 75, canvas.height/2, canvas.width/2, canvas.height/2 + 350);
     //ice cream
     canvas.fill(0);
-    canvas.drawCircle((float)canvas.width/2, (float)canvas.height/2 - 150, (float)150);
+    drawCircle((float)canvas.width/2, (float)canvas.height/2 - 150, (float)150);
     //cone squares
     fill(255);
     int s = 24; 
@@ -44,16 +44,6 @@ void setup()
         canvas.rect(canvas.width/2 + 30 - i*s - j*s, canvas.height/2 + 50 + j*s, s, s);
       }
     }
-    
-//    void drawCircle(float x, float y, float d) 
-//    {
-//      canvas.ellipse(x, y, d, d);
-//    
-//      if (d >= 90) {
-//        canvas.drawCircle(x + d/3, y + (d*sqrt(3))/3, 3*d/4);
-//        canvas.drawCircle(x - d/3, y + (d*sqrt(3))/3, 3*d/4);
-//      }
-//    }
   canvas.endDraw();
   
   float resizedWidth = (float) canvas.width * ratio;
@@ -78,7 +68,7 @@ void calculateResizeRatio()
 
 void drawCircle(float x, float y, float d) 
 {
-  ellipse(x, y, d, d);
+  canvas.ellipse(x, y, d, d);
 
   if (d >= 90) {
     drawCircle(x + d/3, y + (d*sqrt(3))/3, 3*d/4);
