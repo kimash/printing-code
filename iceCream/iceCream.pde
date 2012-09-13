@@ -27,6 +27,7 @@ void setup()
   
   canvas.beginDraw();
     canvas.background(255);
+    //canvas.scale(2.0);
     canvas.smooth();
     canvas.stroke(0);
     canvas.strokeWeight(4);
@@ -35,9 +36,9 @@ void setup()
     canvas.triangle(canvas.width/2 + 75, canvas.height/2, canvas.width/2 - 75, canvas.height/2, canvas.width/2, canvas.height/2 + 350);
     //ice cream
     canvas.fill(0);
-    drawCircle((float)canvas.width/2, (float)canvas.height/2 - 150, (float)150);
+    drawCircle(canvas.width/2, canvas.height/2 - 150, 150);
     //cone squares
-    fill(255);
+    canvas.noFill();
     int s = 24; 
     for(int i=0; i<2; i++){
       for(int j=0; j<3; j++){
