@@ -25,7 +25,8 @@ void draw()
   int s = 24; 
   for(int i=0; i<2; i++){
     for(int j=0; j<3; j++){
-      rect(width/2 - 53 + i*s + j*s, height/2 + 50 + j*s, s, s);
+      rect(width/2 + 30 - i*s - j*s, height/2 + 50 + j*s, s, s);
+      //rect(width/2 - 53 + i*s + j*s, height/2 + 50 + j*s, s, s);
     }
   }
 }
