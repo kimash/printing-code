@@ -31,14 +31,15 @@ void setup()
     canvas.endShape();
     
     //sharp
+    noiseSeed(4);
     canvas.beginShape();
     for(int i=0; i<21; i++)
     {
       if(i%2 == 0) {  //even points are peaks, odds are valleys
-        canvas.vertex(canvas.width - i*(canvas.width/20), (3*canvas.height/4));
+        canvas.vertex(canvas.width - i*(canvas.width/20), (5*canvas.height/6)*noise(i*0.1));
       }
       else  {
-        canvas.vertex(canvas.width - i*(canvas.width/20), canvas.height);
+        canvas.vertex(canvas.width - i*(canvas.width/20), canvas.height*noise(i*0.1));
       }
     }
     canvas.endShape();
