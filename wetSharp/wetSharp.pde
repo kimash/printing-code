@@ -27,19 +27,44 @@ void setup()
     //canvas.fill(255);
     
     //wet
+    randomSeed(683);  //97
+    canvas.strokeWeight(height/30);
+    int circleRadius = canvas.width/5;
+    float numVertices = 70;
+    float vertexDegree = 360 / numVertices;
+    canvas.fill(0);
+    canvas.pushMatrix();
+    canvas.translate(canvas.width/2, canvas.height/4);
     canvas.beginShape();
-    canvas.endShape();
+        for(int i = 0; i < numVertices; i++)
+      {
+        float x = cos(radians(i * vertexDegree)) * (circleRadius*2);
+        float y = sin(radians(i * vertexDegree)) * (circleRadius + random(-height/4, height/4));
+        if(y>=circleRadius)  {
+          canvas.curveVertex(x, y + height/2);
+        }
+        else  {
+          canvas.curveVertex(x, y);
+        }
+      }
+    canvas.endShape(CLOSE);
+    canvas.popMatrix();
     
     //sharp
+    canvas.noFill();
+    
+    canvas.strokeCap(ROUND);
     noiseSeed(4);
     canvas.beginShape();
     for(int i=0; i<21; i++)
     {
       if(i%2 == 0) {  //even points are peaks, odds are valleys
         canvas.vertex(canvas.width - i*(canvas.width/20), (5*canvas.height/6)*noise(i*0.1));
+        //canvas.vertex(canvas.width - i*(canvas.width/20), canvas.height*noise(i*0.1));
       }
       else  {
         canvas.vertex(canvas.width - i*(canvas.width/20), canvas.height*noise(i*0.1));
+        //canvas.vertex(canvas.width - i*(canvas.width/20), (5*canvas.height/6)*noise(i*0.1));
       }
     }
     canvas.endShape();
