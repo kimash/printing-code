@@ -8,15 +8,23 @@ import org.apache.batik.svggen.font.*;
 
 PGraphics canvas;
 int canvas_width = 5100;
-int canvas_height = 6600;
+int canvas_height = 5100;
 
 float ratioWidth = 1;
 float ratioHeight = 1;
 float ratio = 1;
 
+RFont font;
+RGroup grp;
+RPoint[] pnts;
+String word = "muffin";
+
 void setup()
 { 
-  size(510, 660);
+  size(510, 510);
+  
+  RG.init(this);
+  font = new RFont("BaltHelvetica_Medium.ttf", 100, RFont.LEFT);
   
   canvas = createGraphics(canvas_width, canvas_height);
   
@@ -24,16 +32,23 @@ void setup()
   
   canvas.beginDraw();
     canvas.colorMode(HSB, 360, 100, 100);
-    float h = random(100);
-    canvas.background(h, random(100), random(100));
+    //float h = random(100);
+    canvas.background(360);
     canvas.smooth();
     canvas.noFill();
     
-    //integral shapes
-    canvas.stroke(((h+240) % 360), 100, 100);
+    RCommand.setSegmentLength(25);
+    RCommand.setSegmentator(RCommand.UNIFORMLENGTH);
+
+    grp = font.toGroup(word);
+    pnts = grp.getPoints();
+    
+    canvas.stroke(0, 100, 0);
     canvas.strokeWeight(height/30);
+    canvas.pushMatrix();
     canvas.beginShape();
     canvas.endShape();
+    canvas.popMatrix();
   canvas.endDraw();
   
   float resizedWidth = (float) canvas.width * ratio;
