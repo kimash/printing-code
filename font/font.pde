@@ -24,7 +24,7 @@ void setup()
   size(510, 510);
   
   RG.init(this);
-  font = new RFont("BaltHelvetica_Medium.ttf", 100, RFont.LEFT);
+  font = new RFont("BaltHelvetica_Medium.ttf", canvas.width/10, RFont.LEFT);
   
   canvas = createGraphics(canvas_width, canvas_height);
   
@@ -35,18 +35,27 @@ void setup()
     //float h = random(100);
     canvas.background(360);
     canvas.smooth();
-    canvas.noFill();
+    //canvas.noFill();
+    canvas.fill(0, 100, 0);
+    canvas.noStroke();
     
-    RCommand.setSegmentLength(25);
-    RCommand.setSegmentator(RCommand.UNIFORMLENGTH);
+    RCommand.setSegmentLength(canvas.width/30);
+    //RCommand.setSegmentator(RCommand.UNIFORMLENGTH);
 
     grp = font.toGroup(word);
+    grp = grp.toPolygonGroup();
     pnts = grp.getPoints();
     
-    canvas.stroke(0, 100, 0);
-    canvas.strokeWeight(height/30);
+    //canvas.stroke(0, 100, 0);
+    //canvas.strokeWeight(height/30);
+    
     canvas.pushMatrix();
+    canvas.translate((canvas.width/2) - (grp.getWidth()/2), (canvas.height/2) + (grp.getHeight()/2));
     canvas.beginShape();
+    for (int i = 0; i < pnts.length; i++ ) 
+    {
+      canvas.ellipse(pnts[i].x, pnts[i].y, canvas.width/40, canvas.width/40);
+    }
     canvas.endShape();
     canvas.popMatrix();
   canvas.endDraw();
