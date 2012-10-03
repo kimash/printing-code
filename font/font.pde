@@ -56,6 +56,7 @@ void setup()
     {
       canvas.ellipse(pnts[i].x, pnts[i].y, canvas.width/40, canvas.width/40);
     }
+    font.draw(word);
     canvas.endShape();
     canvas.popMatrix();
   canvas.endDraw();
