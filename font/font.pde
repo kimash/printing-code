@@ -24,7 +24,7 @@ void setup()
   size(510, 510);
   
   RG.init(this);
-  font = new RFont("BaltHelvetica_Medium.ttf", canvas.width/10, RFont.LEFT);
+  font = new RFont("FreeSans.ttf", canvas.width/10, RFont.LEFT);
   
   canvas = createGraphics(canvas_width, canvas_height);
   
