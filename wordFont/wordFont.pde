@@ -18,7 +18,7 @@ Letter i;
 Letter n;
 
 float distX = canvas_width/20;
-float distY = 4*distX;
+float distY = 8*distX;
 
 void setup()
 { 
@@ -28,15 +28,14 @@ void setup()
   
   canvas.beginDraw();
     canvas.colorMode(HSB, 360, 100, 100);
-    //float h = random(100);
     canvas.background(360);
     canvas.smooth();
-    canvas.fill(201, 63,76);
-    canvas.stroke(0);
+    canvas.fill(32, 86, 99);
+    canvas.stroke(32, 86, 99);
     canvas.strokeWeight(canvas.height/30);
     
     canvas.pushMatrix();
-    canvas.translate(canvas.width/10, canvas.height/3.5);
+    canvas.translate(canvas.width/10, canvas.height/9);
     m = new Letter(0, 0, distX, distY);
     u = new Letter(0 + 3*distX, 0, distX, distY);
     f1 = new Letter(0 + 6*distX, 0, distX, distY);
