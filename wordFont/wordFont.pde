@@ -43,7 +43,7 @@ void setup()
     i = new Letter(0 + 12*distX, 0, distX, distY);
     n = new Letter(0 + 14*distX, 0, distX, distY);
     
-    m.m();
+    m.v();
     u.u();
     f1.f();
     f2.f();
