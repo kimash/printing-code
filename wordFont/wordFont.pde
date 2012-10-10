@@ -39,16 +39,16 @@ void setup()
     m = new Letter(0, 0, distX, distY);
     u = new Letter(0 + 3*distX, 0, distX, distY);
     f1 = new Letter(0 + 6*distX, 0, distX, distY);
-    f2 = new Letter(0 + 9*distX, 0, distX, distY);
-    i = new Letter(0 + 12*distX, 0, distX, distY);
-    n = new Letter(0 + 14*distX, 0, distX, distY);
+    i = new Letter(0 + 9*distX, 0, distX, distY);
+    n = new Letter(0 + 11*distX, 0, distX, distY);
+    f2 = new Letter(0 + 14*distX, 0, distX, distY);
     
     m.g();
     u.u();
     f1.f();
-    f2.f();
     i.i();
     n.n();
+    f2.f();
     canvas.popMatrix();
     
   canvas.endDraw();
