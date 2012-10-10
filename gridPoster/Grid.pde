@@ -3,11 +3,13 @@ class Grid
   int cols;
   float pageMargin;
   Column[] columns;
+  Letter[] letters;
   
   Grid(int _cols, float _pageMargin)
   {
     cols = _cols;
     pageMargin = _pageMargin;
+    letters = new Letter[6];
     
     // cache the full width of all columns
     float fullWidth = canvas.width - (2*pageMargin);
@@ -42,7 +44,7 @@ class Grid
       columns[i].x = xPos;
       columns[i].y = pageMargin;
       columns[i].w = rands[i];
-      columns[i].h = canvas.height - (2*pageMargin);
+      columns[i].h = canvas.height - (2*pageMargin) - (random(1)*canvas.height);
       
       xPos += rands[i];
     }
@@ -53,13 +55,19 @@ class Grid
     // draw big bounding box
     canvas.noFill();
     canvas.stroke(0, 0, 100);
-    canvas.strokeWeight(canvas.width/600);
+    canvas.strokeWeight(canvas.width/500);
     canvas.rect(pageMargin, pageMargin, canvas.width - (2*pageMargin), canvas.height - (2*pageMargin));
     
-    // draw each column
+//    float h = random(360);
+//    canvas.background(h, random(100), random(100));
+    // draw each column and corresponding letter
     for(int i = 0; i < cols; i++)
     {
       canvas.rect(columns[i].x, columns[i].y, columns[i].w, columns[i].h);
+//      canvas.fill(((h+180) % 360), 100, 100);
+//      canvas.stroke(((h+180) % 360), 100, 100);
+//      letters[i] = new Letter(columns[i].x, columns[i].y, (columns[i].w)/2, columns[i].h);
+//      letters[i].k();
     }
   }
 }
