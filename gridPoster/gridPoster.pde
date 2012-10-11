@@ -11,12 +11,14 @@ float ratioHeight = 1;
 float ratio = 1;
 
 //Grid grid;
-Letter z;
-Letter o;
-Letter n;
-Letter k;
-Letter e;
-Letter d;
+//Letter z;
+//Letter o;
+//Letter n;
+//Letter k;
+//Letter e;
+//Letter d;
+
+Letter [] letters;
 
 PVector [] letterpos;
 PVector [] letterdist;
@@ -27,12 +29,13 @@ void setup()
   canvas = createGraphics(canvas_width, canvas_height);
   calculateResizeRatio();
 //  grid = new Grid(6, canvas.width/70);
+  letters = new Letter[6];
   
   canvas.beginDraw();
     canvas.colorMode(HSB, 360, 100, 100);
     float h = random(360);
     canvas.background(h, random(100), random(100));
-    gridfxn(6, canvas.width/70);
+    gridfxn(6, canvas.width/35);
     canvas.smooth();
     canvas.strokeWeight(canvas.width/30);
     
@@ -96,6 +99,8 @@ void gridfxn(int cols, float pageMargin)
   }
   columns = new Column[cols];
   float xPos = pageMargin;
+  letterpos = new PVector[cols];
+  letterdist = new PVector[cols];
     
   for(int i = 0; i < cols; i++)
   {
@@ -108,8 +113,8 @@ void gridfxn(int cols, float pageMargin)
     xPos += rands[i];
     
     //store parameters for drawing letters
-//    letterpos[i] = new PVector(columns[i].x, columns[i].y);
-//    letterdist[i] = new PVector((columns[i].w)/2, columns[i].h); 
+//    letterpos[i] = (columns[i].x, columns[i].y);
+//    letterdist[i] = ((columns[i].w)/2, columns[i].h); 
   }
   
   //bounding box
@@ -118,10 +123,10 @@ void gridfxn(int cols, float pageMargin)
   canvas.strokeWeight(canvas.width/500);
   canvas.rect(pageMargin, pageMargin, canvas.width - (2*pageMargin), canvas.height - (2*pageMargin));
   
-  for(int i = 0; i < cols; i++)
-  {
-    canvas.rect(columns[i].x, columns[i].y, columns[i].w, columns[i].h);
-    letterpos[i] = new PVector(columns[i].x, columns[i].y);
-    letterdist[i] = new PVector((columns[i].w)/2, columns[i].h);
-  }
+//  for(int i = 0; i < cols; i++)
+//  {
+//    canvas.rect(columns[i].x, columns[i].y, columns[i].w, columns[i].h);
+////    letterpos[i] = new PVector(columns[i].x, columns[i].y);
+////    letterdist[i] = new PVector((columns[i].w)/2, columns[i].h);
+//  }
 }
