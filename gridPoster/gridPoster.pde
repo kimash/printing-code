@@ -20,8 +20,8 @@ float ratio = 1;
 
 Letter [] letters;
 
-PVector [] letterpos;
-PVector [] letterdist;
+//PVector [] letterpos;
+//PVector [] letterdist;
 
 void setup()
 { 
@@ -35,19 +35,22 @@ void setup()
     canvas.colorMode(HSB, 360, 100, 100);
     float h = random(360);
     canvas.background(h, random(100), random(100));
+    
     gridfxn(6, canvas.width/35);
     canvas.smooth();
-    canvas.strokeWeight(canvas.width/30);
-    
-    canvas.pushMatrix();
+    canvas.strokeWeight(canvas.width/100);
+    canvas.fill(((h+180) % 360), 100, 100);
+    canvas.stroke(((h+180) % 360), 100, 100);
+    letters[0].z();
+    letters[1].o();
+    letters[2].n();
+    letters[3].k();
+    letters[4].e();
+    letters[5].d();
+//    canvas.pushMatrix();
     //canvas.translate(canvas.width/10, canvas.height/9);
-//    z = new Letter(0, 0, distX, distY);
-//    o = new Letter(0 + 3*distX, 0, distX, distY);
-//    n = new Letter(0 + 6*distX, 0, distX, distY);
-//    k = new Letter(0 + 9*distX, 0, distX, distY);
-//    e = new Letter(0 + 12*distX, 0, distX, distY);
-//    d = new Letter(0 + 14*distX, 0, distX, distY);
-    canvas.popMatrix();
+    
+//    canvas.popMatrix();
     
   canvas.endDraw();
   
@@ -99,8 +102,8 @@ void gridfxn(int cols, float pageMargin)
   }
   columns = new Column[cols];
   float xPos = pageMargin;
-  letterpos = new PVector[cols];
-  letterdist = new PVector[cols];
+//  letterpos = new PVector[cols];
+//  letterdist = new PVector[cols];
     
   for(int i = 0; i < cols; i++)
   {
@@ -112,6 +115,7 @@ void gridfxn(int cols, float pageMargin)
     
     xPos += rands[i];
     
+    letters[i] = new Letter(columns[i].x, columns[i].y, (columns[i].w)/2, columns[i].h);
     //store parameters for drawing letters
 //    letterpos[i] = (columns[i].x, columns[i].y);
 //    letterdist[i] = ((columns[i].w)/2, columns[i].h); 
@@ -123,10 +127,10 @@ void gridfxn(int cols, float pageMargin)
   canvas.strokeWeight(canvas.width/500);
   canvas.rect(pageMargin, pageMargin, canvas.width - (2*pageMargin), canvas.height - (2*pageMargin));
   
-//  for(int i = 0; i < cols; i++)
-//  {
-//    canvas.rect(columns[i].x, columns[i].y, columns[i].w, columns[i].h);
-////    letterpos[i] = new PVector(columns[i].x, columns[i].y);
-////    letterdist[i] = new PVector((columns[i].w)/2, columns[i].h);
-//  }
+  for(int i = 0; i < cols; i++)
+  {
+    canvas.rect(columns[i].x, columns[i].y, columns[i].w, columns[i].h);    
+//    letterpos[i] = new PVector(columns[i].x, columns[i].y);
+//    letterdist[i] = new PVector((columns[i].w)/2, columns[i].h);
+  }
 }
