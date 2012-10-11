@@ -101,7 +101,7 @@ void gridfxn(int cols, float pageMargin)
   
   //bounding box
   canvas.noFill();
-  canvas.stroke(0, 0, 100);
+  canvas.stroke(0, 0, 100, 0);
   canvas.strokeWeight(canvas.width/500);
   canvas.rect(pageMargin, pageMargin, canvas.width - (2*pageMargin), canvas.height - (2*pageMargin));
   
