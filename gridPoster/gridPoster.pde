@@ -24,7 +24,7 @@ void setup()
     float h = random(360);
     canvas.background(h, random(100), random(100));
     
-    gridfxn(6, canvas.width/35);
+    gridfxn(6, canvas.width/15);
     canvas.smooth();
     canvas.strokeWeight(canvas.width/100);
     canvas.fill(((h+120) % 360), 100, 100);
@@ -101,7 +101,7 @@ void gridfxn(int cols, float pageMargin)
   
   //bounding box
   canvas.noFill();
-  canvas.stroke(0, 0, 100, 0);
+  canvas.stroke(0, 0, 100, 0);  //change alpha value to see gridlines
   canvas.strokeWeight(canvas.width/500);
   canvas.rect(pageMargin, pageMargin, canvas.width - (2*pageMargin), canvas.height - (2*pageMargin));
   
