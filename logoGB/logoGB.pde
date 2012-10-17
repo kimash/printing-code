@@ -21,7 +21,7 @@ void setup()
   calculateResizeRatio();
   //gogol = new Letter[5];
   //bordello = new Letter[8];
-  a = new Letter(canvas.width/3, canvas.height/3, canvas.width/10, canvas.height/2); 
+  a = new Letter(canvas.width/3, canvas.height/4, canvas.width/3, canvas.height/2); 
   
   canvas.beginDraw();
     canvas.colorMode(HSB, 360, 100, 100);
@@ -29,12 +29,12 @@ void setup()
     canvas.smooth();
     canvas.noFill();
     canvas.stroke(32, 86, 99);
-    canvas.strokeWeight(canvas.height/30);
+    canvas.strokeWeight(canvas.height/80);
     
     canvas.pushMatrix();
     //canvas.translate(canvas.width/10, canvas.height/9);
     //gogol
-    a.o();
+    a.g();
     canvas.popMatrix();
     
     canvas.pushMatrix();
