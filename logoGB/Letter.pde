@@ -25,16 +25,16 @@ class Letter
   
   void e()
   {
-    canvas.bezier(xpos + 2*distX/3, ypos, xpos + 3*distX/2, ypos + 3*distY/4, xpos, ypos + 3*distY/4, xpos + distX/2, ypos + 3*distY/4);
-    
+    canvas.arc(xpos + distX/2, ypos + distY/2, distX, distY, -PI/2, PI/2);
+    canvas.line(xpos + distX/2, ypos + distY/2, xpos + distX, ypos + distY/2);  //horizontal line
   }
   
   void g()
   {
-    canvas.ellipseMode(CENTER);
-    canvas.arc(xpos + distX/2, ypos + distY/2, distX/2, distY, PI/2, 3*PI/2);
-    canvas.line(xpos + distX/2, ypos + distY/2, xpos + distX/2, ypos + distY);
-    canvas.line(xpos + distX/3, ypos + distY/2, xpos + distX/2, ypos + distY/2);
+ 
+    canvas.arc(xpos + distX/2, ypos + distY/2, distX, distY, PI/2, 3*PI/2);
+    canvas.line(xpos + distX/2, ypos + distY/2, xpos + distX/2, ypos + distY);  //vertical line
+    canvas.line(xpos + distX/4, ypos + distY/2, xpos + distX/2, ypos + distY/2);  //horizontal line
   }
   
   void l()
@@ -45,8 +45,6 @@ class Letter
   
   void o()
   {
-    canvas.noFill();
-    canvas.ellipseMode(CORNER);
     canvas.ellipse(xpos, ypos, distX/3, distY);
   }
 }
