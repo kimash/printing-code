@@ -32,7 +32,7 @@ void setup()
     canvas.noFill();
     canvas.strokeCap(PROJECT);
     canvas.strokeJoin(BEVEL);
-    canvas.stroke(random(360), random(100), random(70,100));
+    canvas.stroke(random(360), random(70,100), 100);
     canvas.strokeWeight(canvas.height/37);
     //a.g();
     
