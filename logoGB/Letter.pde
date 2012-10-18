@@ -46,17 +46,19 @@ class Letter
  
     canvas.pushMatrix();
     canvas.ellipseMode(CENTER);
+    canvas.translate(-distX/4, 0);  //center letter in bounding box
     canvas.arc(xpos + distX, ypos + distY/2, distX, distY, PI/2, 3*PI/2);
     canvas.line(xpos + distX, ypos + distY/2, xpos + distX, ypos + 1.25*distY);  //vertical line
-    canvas.line(xpos + distX/2, ypos + distY/2, xpos + distX, ypos + distY/2);  //horizontal line
+    canvas.line(xpos + 3*distX/4, ypos + distY/2, xpos + distX, ypos + distY/2);  //horizontal line
     canvas.popMatrix();
   }
   
   void l()
   {
     canvas.pushMatrix();
+    canvas.translate(distX/4, 0);  //center letter in bounding box
     canvas.line(xpos, ypos, xpos, ypos + distY);  //vertical line
-    canvas.line(xpos, ypos + distY, xpos + distX, ypos + 4*distY/5);  //horizontal line
+    canvas.line(xpos, ypos + distY, xpos + distX, ypos + 3*distY/4);  //horizontal line
     canvas.popMatrix();
   }
   
