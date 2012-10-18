@@ -56,9 +56,9 @@ class Letter
   void l()
   {
     canvas.pushMatrix();
-    canvas.translate(distX/4, 0);  //center letter in bounding box
+    canvas.translate(distX/8, 0);  //center letter in bounding box
     canvas.line(xpos, ypos, xpos, ypos + distY);  //vertical line
-    canvas.line(xpos, ypos + distY, xpos + distX, ypos + 3*distY/4);  //horizontal line
+    canvas.line(xpos, ypos + distY, xpos + 3*distX/4, ypos + 3*distY/4);  //horizontal line
     canvas.popMatrix();
   }
   
