@@ -13,6 +13,7 @@ float ratio = 1;
 Letter [] gogol;
 Letter [] bordello;
 //Letter a;
+float sf = 4/3;  //scale factor between width and height, i.e. w = sf*h
 
 void setup()
 { 
