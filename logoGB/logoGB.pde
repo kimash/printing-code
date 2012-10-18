@@ -12,8 +12,6 @@ float ratio = 1;
 
 Letter [] gogol;
 Letter [] bordello;
-//Letter a;
-float sf = 4/3;  //scale factor between width and height, i.e. w = sf*h
 
 void setup()
 { 
@@ -21,8 +19,7 @@ void setup()
   canvas = createGraphics(canvas_width, canvas_height);
   calculateResizeRatio();
   gogol = new Letter[5];
-  bordello = new Letter[8];
-  //a = new Letter(canvas.width/3, canvas.height/4, canvas.width/10, canvas.height/8); 
+  bordello = new Letter[8]; 
   
   canvas.beginDraw();
     canvas.colorMode(HSB, 360, 100, 100);
@@ -34,7 +31,6 @@ void setup()
     canvas.strokeJoin(BEVEL);
     canvas.stroke(random(360), random(70,100), 100);
     canvas.strokeWeight(canvas.height/37);
-    //a.g();
     
     //Gogol
     canvas.pushMatrix();
@@ -65,6 +61,7 @@ void setup()
     bordello[7].o();
     canvas.popMatrix();
     
+    //stripes
     for(int i=0; i<=canvas.width; i+=(canvas.width/140)){
       canvas.stroke(360, 100, 0);
       canvas.strokeWeight(canvas.height/200);
