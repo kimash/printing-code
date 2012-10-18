@@ -12,39 +12,65 @@ class Letter
   
   void b()
   {
-    canvas.line(xpos, ypos + distY/5, xpos, ypos + 3*distY/4);
-    canvas.bezier(xpos, ypos + distX/3, xpos + 4*distX/3, ypos + distY/3, xpos - distX/4, ypos + distY/3, xpos, ypos + distY/3);
-    canvas.bezier(xpos, ypos + 2*distX/3, xpos + 4*distX/3, ypos + 2*distY/3, xpos - distX/4, ypos + 2*distY/3, xpos, ypos + 2*distY/3);
+    canvas.pushMatrix();
+    canvas.ellipseMode(CENTER);
+    canvas.line(xpos, ypos, xpos, ypos + distY);
+    canvas.arc(xpos, ypos + distY/6, distX/3, distY/3, -3*PI/4, PI/2);
+    canvas.arc(xpos, ypos + 4*distY/6, distX/2, 2*distY/3, -PI/2, PI/2);
+    canvas.popMatrix();
   }
   
   void d()
   {
+    canvas.pushMatrix();
+    canvas.ellipseMode(CENTER);
     canvas.line(xpos + 2*distX/3, ypos, xpos + 2*distX/3, ypos + distY);
-    //canvas.bezier();
+    canvas.arc(xpos + 3*distX/4, ypos + 3*distY/4, 2*distX/3, distY/3, PI/2, 3*PI/2);
+    canvas.popMatrix();
   }
   
   void e()
   {
+    canvas.pushMatrix();
+    canvas.ellipseMode(CENTER);
     canvas.arc(xpos + distX/2, ypos + distY/2, distX, distY, -PI/2, PI/2);
     canvas.line(xpos + distX/2, ypos + distY/2, xpos + distX, ypos + distY/2);  //horizontal line
+    canvas.popMatrix();
   }
   
   void g()
   {
  
+    canvas.pushMatrix();
+    canvas.ellipseMode(CENTER);
     canvas.arc(xpos + distX/2, ypos + distY/2, distX, distY, PI/2, 3*PI/2);
     canvas.line(xpos + distX/2, ypos + distY/2, xpos + distX/2, ypos + distY);  //vertical line
     canvas.line(xpos + distX/4, ypos + distY/2, xpos + distX/2, ypos + distY/2);  //horizontal line
+    canvas.popMatrix();
   }
   
   void l()
   {
+    canvas.pushMatrix();
     canvas.line(xpos, ypos, xpos, ypos + distY);
-    canvas.line(xpos, ypos + distY, xpos + distX, ypos + 4*distY/5); 
+    canvas.line(xpos, ypos + distY, xpos + distX, ypos + 4*distY/5);
+    canvas.popMatrix();
   }
   
   void o()
   {
-    canvas.ellipse(xpos, ypos, distX/3, distY);
+    canvas.pushMatrix();
+    //canvas.ellipseMode(CORNER);
+    canvas.ellipse(xpos + 1.5*distX/6, ypos + distY/2, distX/3, distY);
+    canvas.popMatrix();
+  }
+  
+  void r()
+  {
+    canvas.pushMatrix();
+    canvas.line(xpos, ypos, xpos, ypos + distY);
+    canvas.arc(xpos, ypos + distY/6, distX/3, distY/3, -3*PI/4, PI/2);
+    canvas.line(xpos, ypos + distY/3, xpos + distX/3, ypos + distY);
+    canvas.popMatrix();
   }
 }
