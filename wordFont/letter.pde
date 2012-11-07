@@ -4,8 +4,8 @@ class Letter
   float xpos, ypos;
   
   Letter(float xpos_, float ypos_, float distX_, float distY_){
-    distX = distX_;  //left half of letter
-    distY = distY_;  //right half of letter
+    distX = distX_;  //1/2 width of letter
+    distY = distY_;  //full height of letter
     xpos = xpos_;  //xpos of top left corner of letter
     ypos = ypos_;  //ypos of top left corner of letter
   }
