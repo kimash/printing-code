@@ -12,6 +12,9 @@ float ratioWidth = 1;
 float ratioHeight = 1;
 float ratio = 1;
 
+PVector bezAnc1, bezAnc2, bezAnc3;  //bezier anchor points
+PVector bezCon1, bezCon2, bezCon3, bezCon4;  //bezier control points
+
 void setup()
 { 
   size(510, 660);
@@ -32,26 +35,34 @@ void setup()
     color b = color(204, 98, 95, 80);
     color k = color(360, 100, 0, 80); 
     WeightedRandomSet<Integer> loopColors = new WeightedRandomSet<Integer>();
-    loopColors.add(r, 40);
+    loopColors.add(r, 40);  //more weight on red
     loopColors.add(g, 20);
     loopColors.add(b, 20);
     loopColors.add(k, 20);
+    
+    //PVectors for bezier points
+    bezAnc1 = new PVector(canvas.width/2, 5*canvas.height/6);
+    bezCon1 = new PVector(0, 3*canvas.height/5);
+    bezCon2 = new PVector(canvas.width/5, canvas.height/10);
+    bezAnc2 = new PVector(3*canvas.width/4, canvas.height/7);
+    bezCon3 = new PVector(6*canvas.width/7, canvas.height/6);
+    bezCon4 = new PVector(canvas.width, canvas.height/5);
+    bezAnc3 = new PVector(4*canvas.width/5, 4*canvas.height/7);
     
     //loops
     canvas.strokeWeight(height/15);
     canvas.beginShape();
     for(int i=3; i<15; i++)  { 
-      float noiseVal = 0;
       canvas.stroke(loopColors.getRandom());  //select a random color from the weighted set
       //canvas.bezier(canvas.width/2 - (i*0.4*canvas.height/15), 2*canvas.height/3, 0, canvas.height/3, canvas.width/5, canvas.height/3*i*0.4, (canvas.width/2)+i*canvas.width/10, 2*canvas.height/3);
-      canvas.bezier(canvas.width/2 + i*noise(noiseVal), 5*canvas.height/6 + i*noise(noiseVal), 0, 3*canvas.height/5, canvas.width/5, canvas.height/10, 3*canvas.width/4, canvas.height/7);
-      canvas.bezier(3*canvas.width/4, canvas.height/7, 6*canvas.width/7, canvas.height/6, canvas.width, canvas.height/5, 4*canvas.width/5, 4*canvas.height/7);
-      noiseVal += 0.2;
+      canvas.bezier(bezAnc1.x, bezAnc1.y, bezCon1.x, bezCon1.y, bezCon2.x, bezCon2.y, bezAnc2.x, bezAnc2.y);
+      canvas.bezier(bezAnc2.x, bezAnc2.y, bezCon3.x, bezCon3.y, bezCon4.x, bezCon4.y, bezAnc3.x, bezAnc3.y);
+      
+      canvas.stroke(360, 70, 0, 100);
+      canvas.fill(360, 70, 0, 100);
+      canvas.ellipse(bezAnc3.x, bezAnc3.y, canvas.width/30, canvas.width/30);
+      canvas.noFill();
     }
-    
-//    canvas.stroke(360, 100, 0, 100);
-//    canvas.fill(360, 100, 0, 100);
-//    canvas.ellipse(3*canvas.width/4, 2*canvas.height/7, canvas.width/30, canvas.width/30);
     canvas.endShape();
     
   canvas.endDraw();
