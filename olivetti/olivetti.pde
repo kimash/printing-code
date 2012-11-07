@@ -49,19 +49,25 @@ void setup()
     bezCon4 = new PVector(canvas.width, canvas.height/5);
     bezAnc3 = new PVector(4*canvas.width/5, 4*canvas.height/7);
     
-    //loops
+    //curves
     canvas.strokeWeight(height/15);
     canvas.beginShape();
     for(int i=3; i<15; i++)  { 
       canvas.stroke(loopColors.getRandom());  //select a random color from the weighted set
-      //canvas.bezier(canvas.width/2 - (i*0.4*canvas.height/15), 2*canvas.height/3, 0, canvas.height/3, canvas.width/5, canvas.height/3*i*0.4, (canvas.width/2)+i*canvas.width/10, 2*canvas.height/3);
-      canvas.bezier(bezAnc1.x, bezAnc1.y, bezCon1.x, bezCon1.y, bezCon2.x, bezCon2.y, bezAnc2.x, bezAnc2.y);
-      canvas.bezier(bezAnc2.x, bezAnc2.y, bezCon3.x, bezCon3.y, bezCon4.x, bezCon4.y, bezAnc3.x, bezAnc3.y);
+      float noiseCnt = 0;
+      float n = noise(noiseCnt*i);
       
+      PVector bezAnc3Ran = new PVector(bezAnc3.x - i*random(canvas.height/20), bezAnc3.y - i*random(canvas.height/20)); 
+      canvas.bezier(bezAnc1.x - i*random(canvas.height/20), bezAnc1.y - i*n*(canvas.height/30), bezCon1.x, bezCon1.y, bezCon2.x, bezCon2.y, bezAnc2.x, bezAnc2.y);
+      canvas.bezier(bezAnc2.x, bezAnc2.y, bezCon3.x, bezCon3.y, bezCon4.x, bezCon4.y, bezAnc3Ran.x, bezAnc3Ran.y);
+      
+      //circles on the ends of the curves
       canvas.stroke(360, 70, 0, 100);
       canvas.fill(360, 70, 0, 100);
-      canvas.ellipse(bezAnc3.x, bezAnc3.y, canvas.width/30, canvas.width/30);
+      canvas.ellipse(bezAnc3Ran.x, bezAnc3Ran.y, canvas.width/30, canvas.width/30);
       canvas.noFill();
+      
+      noiseCnt += 0.2;
     }
     canvas.endShape();
     
