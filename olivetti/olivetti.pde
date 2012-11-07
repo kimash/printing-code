@@ -41,9 +41,17 @@ void setup()
     canvas.strokeWeight(height/15);
     canvas.beginShape();
     for(int i=3; i<15; i++)  { 
+      float noiseVal = 0;
       canvas.stroke(loopColors.getRandom());  //select a random color from the weighted set
-      canvas.bezier(canvas.width/2 - (i*0.4*canvas.height/15), 2*canvas.height/3, 0, canvas.height/3, canvas.width/5, canvas.height/3*i*0.4, (canvas.width/2)+i*canvas.width/10, 2*canvas.height/3);
+      //canvas.bezier(canvas.width/2 - (i*0.4*canvas.height/15), 2*canvas.height/3, 0, canvas.height/3, canvas.width/5, canvas.height/3*i*0.4, (canvas.width/2)+i*canvas.width/10, 2*canvas.height/3);
+      canvas.bezier(canvas.width/2 + i*noise(noiseVal), 5*canvas.height/6 + i*noise(noiseVal), 0, 3*canvas.height/5, canvas.width/5, canvas.height/10, 3*canvas.width/4, canvas.height/7);
+      canvas.bezier(3*canvas.width/4, canvas.height/7, 6*canvas.width/7, canvas.height/6, canvas.width, canvas.height/5, 4*canvas.width/5, 4*canvas.height/7);
+      noiseVal += 0.2;
     }
+    
+//    canvas.stroke(360, 100, 0, 100);
+//    canvas.fill(360, 100, 0, 100);
+//    canvas.ellipse(3*canvas.width/4, 2*canvas.height/7, canvas.width/30, canvas.width/30);
     canvas.endShape();
     
   canvas.endDraw();
