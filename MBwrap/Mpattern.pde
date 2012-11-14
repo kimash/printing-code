@@ -3,9 +3,9 @@ class Mpattern
   float distX, distY;
   float xpos, ypos;
   
-  Mpattern(float xpos_, float ypos_, float distX_) 
+  Mpattern(float xpos_, float ypos_) 
   {
-    distX = distX_;  //1/2 width of M
+    distX = canvas.width/15;  //1/2 width of M
     xpos = xpos_;  //xpos of top left corner of M
     ypos = ypos_;  //ypos of top left corner of M
     distY = 2.25*distX;  //full height of M
