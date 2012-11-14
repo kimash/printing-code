@@ -12,10 +12,20 @@ class Mpattern
     ypos = ypos_;  //ypos of top left corner of letter
   }
   
-  void m()
+  void display()
   {
     canvas.pushMatrix();
     canvas.strokeJoin(BEVEL);
+    canvas.line(xpos, ypos, xpos, ypos + distY);  //left vert line
+    canvas.line(xpos, ypos, xpos + 2*distX, ypos);  //top horiz line
+    canvas.line(xpos + distX, ypos, xpos + distX, ypos + distY);  //mid-top vert line
+    canvas.line(xpos + 2*distX, ypos, xpos + 2*distX, ypos + distY);  //right vert line
+    canvas.popMatrix();
+    
+    canvas.pushMatrix();
+    canvas.strokeJoin(BEVEL);
+    canvas.stroke(0, 100, 100);
+    canvas.translate(distX/8, 0);
     canvas.line(xpos, ypos, xpos, ypos + distY);  //left vert line
     canvas.line(xpos, ypos, xpos + 2*distX, ypos);  //top horiz line
     canvas.line(xpos + distX, ypos, xpos + distX, ypos + distY);  //mid-top vert line

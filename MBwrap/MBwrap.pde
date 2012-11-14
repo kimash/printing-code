@@ -13,8 +13,7 @@ float ratio = 1;
 float distX = canvas_width/15;
 float distY = 2.25*distX;
 
-Mpattern m1;
-Mpattern m2;
+Mpattern m;
 
 void setup()
 { 
@@ -30,12 +29,8 @@ void setup()
     canvas.stroke(0, 100, 50);
     canvas.strokeWeight(canvas.width/30);
     
-    m1 = new Mpattern(canvas.width/2, canvas.height/2, distX, distY);
-    m1.m();
-    canvas.stroke(0, 100, 100);
-    canvas.translate(distX/8, 0);
-    m2 = new Mpattern(canvas.width/2, canvas.height/2, distX, distY);
-    m2.m();
+    m = new Mpattern(canvas.width/2, canvas.height/2, distX, distY);
+    m.display();
   canvas.endDraw();
   
   float resizedWidth = (float) canvas.width * ratio;
