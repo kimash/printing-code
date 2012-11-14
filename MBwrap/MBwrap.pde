@@ -10,7 +10,10 @@ float ratioWidth = 1;
 float ratioHeight = 1;
 float ratio = 1;
 
-Mpattern m, m2;
+//Mpattern m, m2;
+ArrayList <Mpattern> pattern;
+float theta = 0;
+float r = 0;
 
 void setup()
 { 
@@ -18,16 +21,18 @@ void setup()
   canvas = createGraphics(canvas_width, canvas_height);
   calculateResizeRatio();
   
+  pattern = new ArrayList<Mpattern>();
+  
   canvas.beginDraw();
     canvas.colorMode(HSB, 360, 100, 100);
     canvas.background(360);
     canvas.smooth();
-    
-    m = new Mpattern(canvas.width/2, canvas.height/2, canvas.width/50);
-    m.displayR();
-    
-    m2 = new Mpattern(canvas.width/4, canvas.height/4, canvas.width/50);
-    m2.displayG();
+    spiral();
+//    m = new Mpattern(canvas.width/2, canvas.height/2, canvas.width/50);
+//    m.displayR();
+//    
+//    m2 = new Mpattern(canvas.width/4, canvas.height/4, canvas.width/50);
+//    m2.displayG();
   canvas.endDraw();
   
   float resizedWidth = (float) canvas.width * ratio;
@@ -47,4 +52,29 @@ void calculateResizeRatio()
   
   if(ratioWidth < ratioHeight)  ratio = ratioWidth;
   else                          ratio = ratioHeight;
+}
+
+
+//tiling function
+void spiral()
+{
+  while (r < canvas.width)
+  {
+    float spX = r*cos(theta);
+    float spY = r*sin(theta);
+    
+    pattern.add(new Mpattern(spX + canvas.width/2, spY + canvas.height/2, canvas.width/75));
+    
+    for(int i=6; i<pattern.size()-1; i++)  {
+      if(i % 2 == 0)  {
+        pattern.get(i).displayG();
+      }
+      else  {
+         pattern.get(i).displayR();
+      }
+    }
+    
+    theta += 1;
+    r += canvas.width/200;
+  }
 }
