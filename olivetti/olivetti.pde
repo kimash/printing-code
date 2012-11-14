@@ -43,8 +43,8 @@ void setup()
     //PVectors for bezier points
     bezAnc1 = new PVector(canvas.width/2, 5*canvas.height/6);
     bezCon1 = new PVector(0, 3*canvas.height/5);
-    bezCon2 = new PVector(canvas.width/5, canvas.height/10);
-    bezAnc2 = new PVector(11*canvas.width/12, canvas.height/7);
+    bezCon2 = new PVector(canvas.width/3, canvas.height/20);
+    bezAnc2 = new PVector(13*canvas.width/14, canvas.height/4);
     
     //curves
     canvas.strokeWeight(height/15);
@@ -53,7 +53,7 @@ void setup()
       canvas.stroke(loopColors.getRandom());  //select a random color from the weighted set
       
       //introduce randomness to anchor and control points
-      PVector bezAnc1Ran = new PVector(bezAnc1.x - i*random(canvas.height/30), bezAnc1.y - i*random(canvas.height/50));
+      PVector bezAnc1Ran = new PVector(bezAnc1.x - i*random(canvas.height/40), bezAnc1.y - i*random(canvas.height/50));
       PVector bezCon2Ran = new PVector(bezCon2.x - i*random(canvas.height/50), bezCon2.y - i*random(canvas.height/30)); 
       PVector bezAnc2Ran = new PVector(bezAnc2.x - i*random(canvas.height/30), bezAnc2.y + i*random(canvas.height/30));
       
