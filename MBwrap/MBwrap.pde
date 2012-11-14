@@ -11,7 +11,6 @@ float ratioHeight = 1;
 float ratio = 1;
 
 float distX = canvas_width/15;
-float distY = 2.25*distX;
 
 Mpattern m;
 
@@ -29,7 +28,7 @@ void setup()
     canvas.stroke(0, 100, 50);
     canvas.strokeWeight(canvas.width/30);
     
-    m = new Mpattern(canvas.width/2, canvas.height/2, distX, distY);
+    m = new Mpattern(canvas.width/2, canvas.height/2, distX);
     m.display();
   canvas.endDraw();
   

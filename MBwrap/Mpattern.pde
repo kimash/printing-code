@@ -2,14 +2,13 @@ class Mpattern
 {
   float distX, distY;
   float xpos, ypos;
-  float sw;
   
-  Mpattern(float xpos_, float ypos_, float distX_, float distY_) 
+  Mpattern(float xpos_, float ypos_, float distX_) 
   {
-    distX = distX_;  //1/2 width of letter
-    distY = distY_;  //full height of letter
-    xpos = xpos_;  //xpos of top left corner of letter
-    ypos = ypos_;  //ypos of top left corner of letter
+    distX = distX_;  //1/2 width of M
+    xpos = xpos_;  //xpos of top left corner of M
+    ypos = ypos_;  //ypos of top left corner of M
+    distY = 2.25*distX;  //full height of M
   }
   
   void display()
