@@ -10,10 +10,9 @@ float ratioWidth = 1;
 float ratioHeight = 1;
 float ratio = 1;
 
-//Mpattern m, m2;
 ArrayList <Mpattern> pattern;
 float theta = 0;
-float r = 0;
+float r = canvas_width/35;
 
 void setup()
 { 
@@ -28,11 +27,7 @@ void setup()
     canvas.background(360);
     canvas.smooth();
     spiral();
-//    m = new Mpattern(canvas.width/2, canvas.height/2, canvas.width/50);
-//    m.displayR();
-//    
-//    m2 = new Mpattern(canvas.width/4, canvas.height/4, canvas.width/50);
-//    m2.displayG();
+
   canvas.endDraw();
   
   float resizedWidth = (float) canvas.width * ratio;
