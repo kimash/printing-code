@@ -10,9 +10,7 @@ float ratioWidth = 1;
 float ratioHeight = 1;
 float ratio = 1;
 
-//float distX = canvas_width/15;
-
-Mpattern m;
+Mpattern m, m2;
 
 void setup()
 { 
@@ -24,12 +22,12 @@ void setup()
     canvas.colorMode(HSB, 360, 100, 100);
     canvas.background(360);
     canvas.smooth();
-    canvas.fill(0, 100, 100);
-    
-    
     
     m = new Mpattern(canvas.width/2, canvas.height/2, canvas.width/50);
-    m.display();
+    m.displayR();
+    
+    m2 = new Mpattern(canvas.width/4, canvas.height/4, canvas.width/50);
+    m2.displayG();
   canvas.endDraw();
   
   float resizedWidth = (float) canvas.width * ratio;
