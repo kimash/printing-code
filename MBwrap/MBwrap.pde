@@ -62,10 +62,11 @@ void spiral()
   {
     float spX = r*cos(theta);
     float spY = r*sin(theta);
+    float msize = canvas.width/75;
     
-    pattern.add(new Mpattern(spX + canvas.width/2, spY + canvas.height/2, canvas.width/75));
+    pattern.add(new Mpattern(spX + canvas.width/2, spY + canvas.height/2, msize));
     
-    for(int i=6; i<pattern.size()-1; i++)  {
+    for(int i=0; i<pattern.size()-1; i++)  {
       if(i % 2 == 0)  {
         pattern.get(i).displayG();
       }
@@ -75,6 +76,6 @@ void spiral()
     }
     
     theta += 1;
-    r += canvas.width/200;
+    r += canvas.width/350;
   }
 }
