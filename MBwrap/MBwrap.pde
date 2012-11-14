@@ -4,7 +4,7 @@
 
 PGraphics canvas;
 int canvas_width = 5100;
-int canvas_height = 5100;
+int canvas_height = 6600;
 
 float ratioWidth = 1;
 float ratioHeight = 1;
@@ -16,7 +16,7 @@ Mpattern m;
 
 void setup()
 { 
-  size(510, 510);
+  size(510, 660);
   canvas = createGraphics(canvas_width, canvas_height);
   calculateResizeRatio();
   
@@ -25,10 +25,10 @@ void setup()
     canvas.background(360);
     canvas.smooth();
     canvas.fill(0, 100, 100);
-    canvas.stroke(0, 100, 50);
-    canvas.strokeWeight(canvas.width/30);
     
-    m = new Mpattern(canvas.width/2, canvas.height/2);
+    
+    
+    m = new Mpattern(canvas.width/2, canvas.height/2, canvas.width/50);
     m.display();
   canvas.endDraw();
   
