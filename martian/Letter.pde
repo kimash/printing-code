@@ -19,6 +19,16 @@ class Letter
      canvas.popMatrix(); 
    }
    
+   void b()
+   {
+     canvas.pushMatrix();
+     canvas.translate(-distX/8, 0);
+     canvas.line(pos.x + distX/4, pos.y, pos.x + distX/4, pos.y + distY);  //vert
+     canvas.arc(pos.x + distX/4, pos.y + distY/4, 1.75*distX, 1.1*distY/2, -5*PI/8, PI/2.5);  //top arc
+     canvas.arc(pos.x + distX/4, pos.y + 3*distY/4, 1.75*distX, 1.1*distY/2, -3*PI/8, 1.8*PI/3);  //bottom arc
+     canvas.popMatrix();
+   }
+   
    void c()
    {
      canvas.pushMatrix();
@@ -65,6 +75,25 @@ class Letter
      canvas.translate(distX/4, 0);
      canvas.line(pos.x, pos.y, pos.x, pos.y + distY);
      canvas.line(pos.x, pos.y + distY, pos.x + 0.75*distX, pos.y + distY);
+     canvas.popMatrix(); 
+   }
+   
+   void m()
+   {
+     canvas.pushMatrix();
+     canvas.line(pos.x, pos.y, pos.x, pos.y + distY);  //left vert
+     canvas.line(pos.x, pos.y, pos.x + distX/2, pos.y + distY);  //left diag
+     canvas.line(pos.x + distX/2, pos.y + distY, pos.x + distX, pos.y);  //right diag
+     canvas.line(pos.x + distX, pos.y, pos.x + distX, pos.y + distY);  //right vert
+     canvas.popMatrix(); 
+   }
+   
+   void n()
+   {
+     canvas.pushMatrix();
+     canvas.line(pos.x, pos.y, pos.x, pos.y + distY);  //left vert
+     canvas.line(pos.x, pos.y, pos.x + distX, pos.y + distY);  //diag
+     canvas.line(pos.x + distX, pos.y, pos.x + distX, pos.y + distY);  //right vert
      canvas.popMatrix(); 
    }
    
