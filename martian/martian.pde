@@ -43,11 +43,11 @@ void setup()
     canvas.pushMatrix();
     canvas.translate(canvas.width/5, 0);
     for(int i=0; i<ray.length; i++)  {
-      ray[i] = new Letter(i*canvas.width/10, canvas.height/10, distX, distY);
+      ray[i] = new Letter(1.25*i*canvas.width/10, canvas.height/10, distX, distY);
     }
     ray[0].a();
-    ray[1].h();
-    ray[2].i();
+    ray[1].d();
+    ray[2].o();
     canvas.popMatrix();
     
     //stars
