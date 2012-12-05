@@ -14,23 +14,46 @@ float ratioWidth = 1;
 float ratioHeight = 1;
 float ratio = 1;
 
+Letter [] ray;
+//Letter [] bradbury;
+//Letter [] the;
+//Letter [] martian;
+//Letter [] chronicles;
+float distX = canvas_width/10;
+float distY = 5*distX/4;
+
 void setup()
 { 
   size(510, 765);
   colorMode(HSB, 360, 100, 100, 100);
   canvas = createGraphics(canvas_width, canvas_height);
-  
   calculateResizeRatio();
+  ray = new Letter[3];
   
   canvas.beginDraw();
     canvas.colorMode(HSB, 360, 100, 100, 100);
     canvas.background(360, 0, 0);
     canvas.smooth();
+    canvas.noFill();
+    grid(canvas.width/30);
+    
+    //Ray
+    canvas.stroke(42, 100, 100);
+    canvas.strokeWeight(canvas.width/150);
+    canvas.pushMatrix();
+    canvas.translate(canvas.width/5, 0);
+    for(int i=0; i<ray.length; i++)  {
+      ray[i] = new Letter(i*canvas.width/10, canvas.height/10, distX, distY);
+    }
+    ray[0].a();
+    ray[1].h();
+    ray[2].i();
+    canvas.popMatrix();
     
     //stars
     canvas.stroke(0, 0, 100);
     canvas.strokeWeight(canvas.width/400);
-    randomSeed(20);
+    //randomSeed(20);
     for(int s=0; s<100; s++)
     {
       canvas.point(random(canvas.width), random(2*canvas.height/5));
@@ -39,8 +62,7 @@ void setup()
     //mountains
     canvas.pushMatrix();
     canvas.stroke(360, 100, 100);
-    canvas.noFill();
-    canvas.strokeWeight(canvas.width/100);
+    canvas.strokeWeight(canvas.width/150);
     canvas.translate(0, canvas.height/4);
     float noiseCount = 0;
     noiseDetail(1);
@@ -76,4 +98,14 @@ void calculateResizeRatio()
   
   if(ratioWidth < ratioHeight)  ratio = ratioWidth;
   else                          ratio = ratioHeight;
+}
+
+//grid
+void grid(float pageMargin)
+{
+  //bounding box for manuscript grid
+  canvas.noFill();
+  canvas.stroke(360, 100, 100, 100);  //change alpha value to see gridlines
+  canvas.strokeWeight(canvas.width/500);
+  canvas.rect(pageMargin, pageMargin, canvas.width - (2*pageMargin), canvas.height - (2*pageMargin));
 }
