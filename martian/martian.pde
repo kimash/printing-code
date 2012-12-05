@@ -46,8 +46,8 @@ void setup()
       ray[i] = new Letter(1.25*i*canvas.width/10, canvas.height/10, distX, distY);
     }
     ray[0].a();
-    ray[1].d();
-    ray[2].o();
+    ray[1].s();
+    ray[2].e();
     canvas.popMatrix();
     
     //stars

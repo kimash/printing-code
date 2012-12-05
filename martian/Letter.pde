@@ -29,9 +29,17 @@ class Letter
    void d()
    {
      canvas.pushMatrix();
-     //canvas.translate(distX/4, 0);
+     canvas.translate(distX/8, 0);
      canvas.arc(pos.x, pos.y + distY/2, 1.75*distX, distY, -PI/2, PI/2);
      canvas.line(pos.x, pos.y, pos.x, pos.y + distY);
+     canvas.popMatrix(); 
+   }
+   
+   void e()
+   {
+     canvas.pushMatrix();
+     canvas.arc(pos.x + distX, pos.y + distY/2, 1.75*distX, distY, PI/2, 3*PI/2);
+     canvas.line(pos.x + 0.125*distX, pos.y + distY/2, pos.x + distX, pos.y + distY/2);
      canvas.popMatrix(); 
    }
    
@@ -65,6 +73,12 @@ class Letter
      canvas.pushMatrix();
      canvas.ellipse(pos.x + distX/2, pos.y + distY/2, 0.88*distX, distY);
      canvas.popMatrix(); 
+   }
+   
+   void s()
+   {
+     canvas.arc(pos.x + distX, pos.y + distY/4, 1.75*distX, 1.1*distY/2, 5*PI/8, 3*PI/2);  //top arc
+     canvas.arc(pos.x + distX/4, pos.y + 3*distY/4, 1.75*distX, 1.1*distY/2, -3*PI/8, PI/2);  //bottom arc
    }
    
    void t()
