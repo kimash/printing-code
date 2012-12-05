@@ -20,7 +20,7 @@ Letter [] ray;
 //Letter [] martian;
 //Letter [] chronicles;
 float distX = canvas_width/10;
-float distY = 5*distX/4;
+//float distY = 5*distX/4;
 
 void setup()
 { 
@@ -43,11 +43,11 @@ void setup()
     canvas.pushMatrix();
     canvas.translate(canvas.width/5, 0);
     for(int i=0; i<ray.length; i++)  {
-      ray[i] = new Letter(1.25*i*canvas.width/10, canvas.height/10, distX, distY);
+      ray[i] = new Letter(1.25*i*canvas.width/10, canvas.height/10, distX);
     }
-    ray[0].a();
-    ray[1].s();
-    ray[2].e();
+    ray[0].r();
+    ray[1].a();
+    ray[2].y();
     canvas.popMatrix();
     
     //stars
