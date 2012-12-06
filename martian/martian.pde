@@ -19,12 +19,13 @@ Letter [] bradbury;
 Letter [] the;
 Letter [] martian;
 Letter [] chronicles;
-float distX = canvas_width/15;
+float name = canvas_width/19;
+float title = canvas_width/15;
 
 void setup()
 { 
   size(510, 765);
-  colorMode(HSB, 360, 100, 100, 100);
+  colorMode(HSB, 1, 1, 1);
   canvas = createGraphics(canvas_width, canvas_height);
   calculateResizeRatio();
   ray = new Letter[3];
@@ -34,46 +35,51 @@ void setup()
   chronicles = new Letter[10];
   
   canvas.beginDraw();
-    canvas.colorMode(HSB, 360, 100, 100, 100);
-    canvas.background(360, 0, 0);
+    canvas.colorMode(HSB, 1, 1, 1);
+    canvas.background(0, 0, 0);
     canvas.smooth();
     canvas.noFill();
-    grid(canvas.width/30);
-    
+    grid(canvas.width/15);
+
+    //author
     //Ray
-    canvas.stroke(42, 100, 100);
+    canvas.stroke(42, 1, 1);
     canvas.strokeWeight(canvas.width/150);
     canvas.pushMatrix();
-    canvas.translate(canvas.width/20, 0);
-    for(int i=0; i<ray.length; i++)  {
-      ray[i] = new Letter(1.25*i*canvas.width/15, canvas.height/15, distX);
-    }
-    ray[0].r();
-    ray[1].a();
-    ray[2].y();
+      canvas.translate(0.5*canvas.width/15, canvas.width/15);
+      canvas.pushMatrix();
+      canvas.translate(1.5*canvas.width/15, 0);
+      for(int i=0; i<ray.length; i++)  {
+        ray[i] = new Letter(i*canvas.width/15, 0, name);
+      }
+      ray[0].r();
+      ray[1].a();
+      ray[2].y();
+      canvas.popMatrix();
+      
+      //Bradbury
+      canvas.pushMatrix();
+      canvas.translate(5*canvas.width/15, 0);
+      for(int i=0; i<bradbury.length; i++)  {
+        bradbury[i] = new Letter(i*canvas.width/15, 0, name);
+      }
+      bradbury[0].b();
+      bradbury[1].r();
+      bradbury[2].a();
+      bradbury[3].d();
+      bradbury[4].b();
+      bradbury[5].u();
+      bradbury[6].r();
+      bradbury[7].y();
+      canvas.popMatrix();
     canvas.popMatrix();
     
-    //Bradbury
-    canvas.pushMatrix();
-    canvas.translate(5*canvas.width/15, 0);
-    for(int i=0; i<bradbury.length; i++)  {
-      bradbury[i] = new Letter(1.25*i*canvas.width/15, canvas.height/15, distX);
-    }
-    bradbury[0].b();
-    bradbury[1].r();
-    bradbury[2].a();
-    bradbury[3].d();
-    bradbury[4].b();
-    bradbury[5].u();
-    bradbury[6].r();
-    bradbury[7].y();
-    canvas.popMatrix();
-    
+    //title
     //The
     canvas.pushMatrix();
-    canvas.translate(canvas.width/30, 0);
+    canvas.translate(21*canvas.width/30, 2.5*canvas.height/15);
     for(int i=0; i<the.length; i++)  {
-      the[i] = new Letter(1.2*i*canvas.width/15, 2.25*canvas.height/15, distX);
+      the[i] = new Letter(1.2*i*canvas.width/15, 0, title);
     }
     the[0].t();
     the[1].h();
@@ -82,9 +88,9 @@ void setup()
     
     //Martian
     canvas.pushMatrix();
-    canvas.translate(canvas.width/15, 0);
+    canvas.translate(5.71*canvas.width/15, 3.5*canvas.height/15);
     for(int i=0; i<martian.length; i++)  {
-      martian[i] = new Letter(1.2*i*canvas.width/15 + 5*canvas.width/15, 2.25*canvas.height/15, distX);
+      martian[i] = new Letter(1.2*i*canvas.width/15, 0, title);
     }
     martian[0].m();
     martian[1].a();
@@ -97,9 +103,9 @@ void setup()
     
     //Chronicles
     canvas.pushMatrix();
-    canvas.translate(canvas.width/15, 0);
+    canvas.translate(2*canvas.width/15, 4.5*canvas.height/15);
     for(int i=0; i<chronicles.length; i++)  {
-      chronicles[i] = new Letter(1.2*i*canvas.width/15, 3.5*canvas.height/15, distX);
+      chronicles[i] = new Letter(1.2*i*canvas.width/15, 0, title);
     }
     chronicles[0].c();
     chronicles[1].h();
@@ -123,14 +129,19 @@ void setup()
 //    }
     
     //mountains
+    TColor col = TColor.newHSV(.04, .98, .98);
+    ColorTheoryStrategy s = new AnalogousStrategy();
+    ColorList colors = ColorList.createUsingStrategy(s, col);
+    
     canvas.pushMatrix();
-    canvas.stroke(360, 100, 100);
-    canvas.strokeWeight(canvas.width/150);
+    canvas.strokeWeight(canvas.width/20);  //150
     canvas.translate(0, canvas.height/4);
     float noiseCount = 0;
     noiseDetail(1);
     for(int m=0; m<4; m++)
     {
+      TColor c = colors.get(m);
+      canvas.stroke(c.hue(), c.saturation(), c.brightness());
       canvas.beginShape();
       canvas.translate(0, canvas.height/8);
       for(int i=0; i<canvas.width + 40; i+=100)
@@ -169,6 +180,6 @@ void grid(float pageMargin)
   //bounding box for manuscript grid
   canvas.noFill();
   canvas.stroke(360, 100, 100, 100);  //change alpha value to see gridlines
-  canvas.strokeWeight(canvas.width/500);
+  canvas.strokeWeight(canvas.width/300);
   canvas.rect(pageMargin, pageMargin, canvas.width - (2*pageMargin), canvas.height - (2*pageMargin));
 }

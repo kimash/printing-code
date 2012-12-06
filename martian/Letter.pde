@@ -123,6 +123,7 @@ class Letter
    void t()
    {
      canvas.pushMatrix();
+     //canvas.translate(distX/8, 0);
      canvas.line(pos.x + distX/2, pos.y, pos.x + distX/2, pos.y + distY);  //vert
      canvas.line(pos.x, pos.y, pos.x + distX, pos.y);  //horiz
      canvas.popMatrix(); 
