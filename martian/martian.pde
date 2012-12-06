@@ -36,19 +36,24 @@ void setup()
   
   canvas.beginDraw();
     canvas.colorMode(HSB, 1, 1, 1);
-    canvas.background(0, 0, 0);
+    TColor col = TColor.newHSV(.04, .98, .98);
+    ColorTheoryStrategy rcomp = new RightSplitComplementaryStrategy();
+    ColorList rcompList = ColorList.createUsingStrategy(rcomp, col);
+    TColor back = rcompList.get(3);
+    canvas.background(back.hue(), back.saturation(), back.brightness());
     canvas.smooth();
     canvas.noFill();
-    grid(canvas.width/15);
-
+    TColor authorC = rcompList.get(4);
+    canvas.stroke(authorC.hue(), authorC.saturation(), authorC.brightness());
+    canvas.strokeWeight(canvas.width/200);
+    
     //author
     //Ray
-    canvas.stroke(42, 1, 1);
     canvas.strokeWeight(canvas.width/150);
     canvas.pushMatrix();
-      canvas.translate(0.45*canvas.width/15, canvas.width/15);
+      canvas.translate(2.3*canvas.width/30, canvas.width/15);
       canvas.pushMatrix();
-      canvas.translate(1.5*canvas.width/15, 0);
+      canvas.translate(canvas.width/15, 0);
       for(int i=0; i<ray.length; i++)  {
         ray[i] = new Letter(i*canvas.width/15, 0, name);
       }
@@ -75,6 +80,8 @@ void setup()
     canvas.popMatrix();
     
     //title
+    TColor titleC = rcompList.get(5);
+    canvas.stroke(titleC.hue(), titleC.saturation(), titleC.brightness());
     //The
     canvas.pushMatrix();
     canvas.translate(21*canvas.width/30, 2.5*canvas.height/15);
@@ -119,26 +126,16 @@ void setup()
     chronicles[9].s();
     canvas.popMatrix();
     
-    //stars
-//    canvas.stroke(0, 0, 100);
-//    canvas.strokeWeight(canvas.width/400);
-//    //randomSeed(20);
-//    for(int s=0; s<100; s++)
-//    {
-//      canvas.point(random(canvas.width), random(2*canvas.height/5));
-//    }
-    
     //mountains
-    TColor col = TColor.newHSV(.04, .98, .98);
     ColorTheoryStrategy s = new AnalogousStrategy();
     ColorList colors = ColorList.createUsingStrategy(s, col);
     
     canvas.pushMatrix();
-    canvas.strokeWeight(canvas.width/20);  //150
+    canvas.strokeWeight(canvas.width/50);  //150
     canvas.translate(0, canvas.height/4);
     float noiseCount = 0;
     noiseDetail(1);
-    for(int m=0; m<4; m++)
+    for(int m=1; m<5; m++)
     {
       TColor c = colors.get(m);
       canvas.stroke(c.hue(), c.saturation(), c.brightness());
@@ -147,12 +144,18 @@ void setup()
       for(int i=0; i<canvas.width + 40; i+=100)
       {
         float ranY = noise(noiseCount);
-        canvas.vertex(i, ranY * canvas.height/3);
+        canvas.vertex(i, ranY*canvas.height/3);
+        //if(i%2 == 0)  {
+          canvas.strokeWeight(canvas.width/150);
+          canvas.line(i, ranY*canvas.height/3, i, canvas.height);
+       // }
         noiseCount += 0.12;
+        canvas.strokeWeight(canvas.width/50);
       }
       canvas.endShape();
     } 
     canvas.popMatrix();
+    grid(canvas.width/15);
   canvas.endDraw();
   
   float resizedWidth = (float) canvas.width * ratio;
@@ -179,7 +182,9 @@ void grid(float pageMargin)
 {
   //bounding box for manuscript grid
   canvas.noFill();
-  canvas.stroke(360, 100, 100, 100);  //change alpha value to see gridlines
+  canvas.stroke(0.4, 1, 1, 100);  //change alpha value to see gridlines
   canvas.strokeWeight(canvas.width/300);
   canvas.rect(pageMargin, pageMargin, canvas.width - (2*pageMargin), canvas.height - (2*pageMargin));
+  canvas.line(2*pageMargin, pageMargin, 2*pageMargin, canvas.height-(pageMargin));
+  canvas.line(canvas.width-2*pageMargin, pageMargin, canvas.width-2*pageMargin, canvas.height-pageMargin);
 }
