@@ -46,7 +46,7 @@ void setup()
     canvas.stroke(42, 1, 1);
     canvas.strokeWeight(canvas.width/150);
     canvas.pushMatrix();
-      canvas.translate(0.5*canvas.width/15, canvas.width/15);
+      canvas.translate(0.45*canvas.width/15, canvas.width/15);
       canvas.pushMatrix();
       canvas.translate(1.5*canvas.width/15, 0);
       for(int i=0; i<ray.length; i++)  {
