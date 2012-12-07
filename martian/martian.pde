@@ -43,11 +43,12 @@ void setup()
     canvas.background(back.hue(), back.saturation(), back.brightness());
     canvas.smooth();
     canvas.noFill();
+    //canvas.strokeCap(PROJECT);
+    
+    //author
     TColor authorC = rcompList.get(4);
     canvas.stroke(authorC.hue(), authorC.saturation(), authorC.brightness());
     canvas.strokeWeight(canvas.width/200);
-    
-    //author
     //Ray
     canvas.strokeWeight(canvas.width/150);
     canvas.pushMatrix();
@@ -145,16 +146,22 @@ void setup()
       {
         float ranY = noise(noiseCount);
         canvas.vertex(i, ranY*canvas.height/3);
-        //if(i%2 == 0)  {
-          canvas.strokeWeight(canvas.width/150);
-          canvas.line(i, ranY*canvas.height/3, i, canvas.height);
-       // }
+        canvas.strokeWeight(canvas.width/150);
+        canvas.line(i, ranY*canvas.height/3, i, canvas.height);
         noiseCount += 0.12;
         canvas.strokeWeight(canvas.width/50);
       }
       canvas.endShape();
     } 
     canvas.popMatrix();
+    
+    //rocket
+    TColor rocket = colors.get(3);
+    canvas.stroke(rocket.hue(), 0.07+rocket.saturation(), rocket.brightness());
+    canvas.strokeWeight(canvas.width/150);
+    for(int i=0; i<3; i++)  {
+      canvas.bezier(0, i*canvas.width/15, (2.5-i/3)*canvas.width/15, 1.4*canvas.height/15, 6.1*canvas.width/15, canvas.height/3, 5.6*canvas.width/15, 4.5*canvas.height/15);
+    }
     grid(canvas.width/15);
   canvas.endDraw();
   
@@ -182,9 +189,10 @@ void grid(float pageMargin)
 {
   //bounding box for manuscript grid
   canvas.noFill();
-  canvas.stroke(0.4, 1, 1, 100);  //change alpha value to see gridlines
+  canvas.stroke(0.4, 1, 1,0);  //change alpha value to see gridlines
   canvas.strokeWeight(canvas.width/300);
   canvas.rect(pageMargin, pageMargin, canvas.width - (2*pageMargin), canvas.height - (2*pageMargin));
-  canvas.line(2*pageMargin, pageMargin, 2*pageMargin, canvas.height-(pageMargin));
-  canvas.line(canvas.width-2*pageMargin, pageMargin, canvas.width-2*pageMargin, canvas.height-pageMargin);
+  canvas.line(5.6*canvas.width/15, pageMargin, 5.6*canvas.width/15, canvas.height-(pageMargin));
+  //canvas.line(canvas.width-2*pageMargin, pageMargin, canvas.width-2*pageMargin, canvas.height-pageMargin);
+  canvas.line(pageMargin, 4.5*canvas.height/15, canvas.width-pageMargin, 4.5*canvas.height/15);
 }
